@@ -254,3 +254,151 @@ Function Overriding
 Virtual Functions
 
 Abstraction
+
+
+4️⃣ Shape, Circle & Rectangle – Runtime Polymorphism
+📌 Description
+
+This program demonstrates Runtime Polymorphism using a base class pointer and virtual functions.
+
+🔽 Input
+#include <iostream>
+using namespace std;
+
+class Shape {
+
+public:
+
+    virtual void display() {
+
+        cout<<"This is  shape"<< endl;
+
+    }
+
+};
+
+class Circle : public Shape {
+
+public:
+
+    void display() {
+
+        cout<<"This is  Circle"<<endl;
+
+    }
+
+};
+
+class Rectangle : public Shape {
+
+public:
+
+    void display() {
+
+        cout<<"This is  Rectangle"<<endl;
+
+    }
+};
+
+int main() {
+
+    Shape* S[4];
+    Circle C;
+    Rectangle R;
+
+    S[0] = &C;
+    S[1] = &R;
+
+    for (int i = 0; i < 4; i++) {
+        S[i]->display();
+    }
+
+    return 0;
+}
+;
+
+🔼 Output
+This is Circle
+This is Rectangle
+Segmentation fault
+
+
+5️⃣ Animal (Dog & Bird) – Pure Virtual Functions
+📌 Description
+
+This program demonstrates Abstraction and Polymorphism using an abstract class Animal with pure virtual functions.
+
+🔽 Input
+#include <iostream>
+using namespace std;
+
+class Animal {
+
+public:      // same class but different forms :-
+
+    virtual void sound() = 0;
+    virtual void move() = 0;
+
+};
+
+class Dog : public Animal {
+
+public:
+
+    void sound() {
+
+        cout<<"Dog : barks"<<endl;
+
+    }
+
+    void move() {
+
+        cout<<"Dog : runs"<<endl;
+
+    }
+
+};
+
+class Bird : public Animal {
+
+public:
+
+    void sound() {
+
+        cout<<"Bird : chirps"<<endl;
+
+    }
+
+    void move() {
+
+        cout<<"Bird  : flies"<<endl;
+
+    }
+
+};
+
+int main() {
+
+    Animal* A[2];
+    Dog D;
+    Bird B;
+
+    A[0] = &D;
+    A[1] = &B;
+
+    for (int i = 0; i < 2; i++) {
+
+        A[i]->sound();
+        A[i]->move();
+
+    }
+
+    return 0;
+}
+
+🔼 Output
+Dog : barks
+Dog : runs
+Bird : chirps
+Bird : flies
+
